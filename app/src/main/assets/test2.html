@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JavaScript View</title>
+
+    <script type="text/javascript">
+
+        function showToast(){
+            var message = document.getElementById("message").value;
+            var lengthLong = document.getElementById("length").checked;
+            alert('{"url_favorites":"file:///android_asset/test.html"}');
+             <!--public void goToDetail(String url, String urlDetail)-->
+            <!--MainActivity.goToDetail('http://uxr99nhsia.vcdn.com.vn/hls/live/vtc3_enc/index.m3u8','file:///android_asset/test2.html','file:///android_asset/test2.html',50);-->
+            <!--var location = MainActivity.getLocation();-->
+            <!--var message = document.getElementById("message").value= location;-->
+
+            <!--MainActivity.shareMessage();-->
+            return false;
+        }
+
+
+        window.onload = function(){
+            var form = document.getElementById("form");
+            form.onsubmit = showToast;
+        }
+    </script>
+</head>
+
+<body>
+
+<form id="form">
+    Message: <input id="message" name="message" type="text"/><br />
+    Long: <input id="length" name="length" type="checkbox" /><br />
+
+    <input type="submit" value="Make Toast" />
+</form>
+
+</body>
+</html>

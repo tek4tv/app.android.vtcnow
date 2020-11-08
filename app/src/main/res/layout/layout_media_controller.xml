@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent" android:layout_height="match_parent"
+                tools:background="@drawable/shape_shimmer"
+                android:id="@+id/rlMediaController"
+                android:visibility="visible">
+    <ImageView
+            android:id="@+id/imgPlay"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:visibility="gone"
+            android:layout_centerInParent="true"
+            app:srcCompat="@drawable/ic_play" tools:ignore="VectorDrawableCompat"/>
+
+    <RelativeLayout
+            android:layout_alignParentBottom="true"
+            android:layout_width="match_parent"
+            android:visibility="visible"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical">
+        <TextView
+                android:id="@+id/tvCurrentTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:visibility="gone"
+                tools:text="1:15"
+                android:layout_marginStart="8dp"
+                android:layout_centerVertical="true"/>
+
+        <ImageView
+                android:id="@+id/imgZoomOut"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="1dp"
+                android:layout_marginBottom="20dp"
+                app:srcCompat="@drawable/exo_controls_fullscreen_enter" />
+
+        <TextView
+                android:id="@+id/tvDuration"
+                android:textColor="@color/white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="1:15"
+                android:visibility="gone"
+                android:layout_marginEnd="8dp"
+                android:layout_centerVertical="true"
+                android:layout_toStartOf="@+id/imgZoomOut"/>
+    </RelativeLayout>
+    <androidx.appcompat.widget.AppCompatSeekBar
+            android:id="@+id/progress_bar_video"
+            android:layout_width="match_parent"
+            android:layout_marginRight="40dp"
+            android:visibility="gone"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true">
+
+    </androidx.appcompat.widget.AppCompatSeekBar>
+<!--    <ProgressBar-->
+<!--            android:id="@+id/progress_bar_video"-->
+<!--            style="@style/Widget.MaterialProgressBar.ProgressBar.Horizontal"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_alignParentBottom="true"-->
+<!--            android:progressDrawable="@drawable/drawable_video_progress"-->
+<!--            android:max="100"-->
+<!--            android:progress="20"-->
+<!--            android:visibility="visible"/>-->
+</RelativeLayout>

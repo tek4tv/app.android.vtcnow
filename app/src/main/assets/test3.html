@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JavaScript View</title>
+
+    <script type="text/javascript">
+
+        function showToast(){
+            var message = document.getElementById("message").value;
+            var lengthLong = document.getElementById("length").checked;
+
+            alert('{"url":"http://uxr99nhsia.vcdn.com.vn/hls/live/vtc3_enc/index.m3u8"}');
+
+            return false;
+        }
+
+
+        window.onload = function(){
+            var form = document.getElementById("form");
+            form.onsubmit = showToast;
+        }
+    </script>
+</head>
+
+<body>
+
+<form id="form">
+    Message: <input id="message" name="message" type="text"/><br />
+    Long: <input id="length" name="length" type="checkbox" /><br />
+
+    <input type="submit" value="Make Toast" />
+</form>
+
+</body>
+</html>

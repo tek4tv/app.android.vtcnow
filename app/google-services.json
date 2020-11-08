@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "634747444321",
+    "firebase_url": "https://vtcnowandroid.firebaseio.com",
+    "project_id": "vtcnowandroid",
+    "storage_bucket": "vtcnowandroid.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:634747444321:android:859e40cd83da0bbd735e20",
+        "android_client_info": {
+          "package_name": "com.accedo.vtc"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "634747444321-1in2o5kebumuolq3illgd9jg7bh038vq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.accedo.vtc",
+            "certificate_hash": "46ed55344b28d0206df217924a15a4e62620d51e"
+          }
+        },
+        {
+          "client_id": "634747444321-8g1ahq9mdnlqv3aisoqugcv12b3aj2ie.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBHzuyO5VffJTn4PC83CyAaDzYy5UFEHeM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "634747444321-8g1ahq9mdnlqv3aisoqugcv12b3aj2ie.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

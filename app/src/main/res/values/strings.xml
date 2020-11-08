@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">VTC Now</string>
+    <string name="load_failed">Tải thông tin thất bại, nhấn vào đây để thử lại </string>
+    <string name="title">Title</string>
+    <string name="default_notification_channel_id">28</string>
+    <string name="eror_network">Không có kết internet . Vui lòng kiểm tra lại tín hiệu internet!</string>
+    <string name="confirm_back">Vui lòng nhấn BACK lần nữa để thoát</string>
+    <string name="ad_tag_url"><![CDATA[http://api.vtcnow.vn/ads.ashx]]></string>
+
+
+</resources>
