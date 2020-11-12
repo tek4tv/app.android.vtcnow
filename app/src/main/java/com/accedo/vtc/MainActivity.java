@@ -6,6 +6,8 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
@@ -20,6 +22,8 @@ import android.webkit.CookieSyncManager;
 import android.webkit.JavascriptInterface;
 import android.webkit.JsResult;
 import android.webkit.WebChromeClient;
+import android.webkit.WebResourceRequest;
+import android.webkit.WebResourceResponse;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -42,6 +46,13 @@ import com.google.firebase.iid.InstanceIdResult;
 import com.google.gson.Gson;
 import com.tbruyelle.rxpermissions2.RxPermissions;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.MalformedURLException;
 import java.util.List;
 import java.util.Locale;
 
@@ -62,6 +73,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
     public void setLocation(LocationCustom location) {
         this.location = location;
     }
+    private String[] imageExtensions = {"jpg", "jpeg", "png", "gif", "JPG", "JPEG", "PNG", "GIF"};
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -124,7 +136,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
                 if (key != null && !key.equals("") && key.equals("url")) {
                     String value = getIntent().getExtras().get(key).toString();
                     if (value != null && !value.equals("") && value.contains("vtcnow.vn")) {
-                            value = value.replace("https://vtcnow.vn/", "");
+                        value = value.replace("https://vtcnow.vn/", "");
                         urlWv = urlWv + "#" + value;
                     }
                     break;
@@ -151,6 +163,38 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
 
         wv.setWebViewClient(new WebViewClient() {
             @Override
+            public WebResourceResponse shouldInterceptRequest(WebView view, WebResourceRequest request) {
+                Uri source = request.getUrl();
+                String url = source.getPath();
+                Log.d("urllll",url);
+                if (source.getPath() != null) {
+                    try {
+                        if (isImage(url)) {
+                            System.out.println("File is: " + url);
+                            // Check if image is present in memory.
+                            File file = new File(getApplicationContext().getCacheDir().getAbsolutePath() + "/" + source.getLastPathSegment());
+                            if (!file.exists()) {
+                                // File is not present in cache and thus needs to be downloaded
+                                InputStream in = new java.net.URL(url).openStream();
+                                Bitmap image = BitmapFactory.decodeStream(in);
+                                FileOutputStream fos = new FileOutputStream(new File(getApplicationContext().getCacheDir().getAbsolutePath() + "/" + source.getLastPathSegment()));
+                                image.compress(Bitmap.CompressFormat.PNG, 100, fos);
+                            }
+                            FileInputStream fis = new FileInputStream(new File(getApplicationContext().getCacheDir().getAbsolutePath() + "/" + source.getLastPathSegment()));
+                            return new WebResourceResponse("image/jpeg", "utf-8", fis);
+                        } else {
+                            // Delegate image loading completely to parent
+                            return null;
+                        }
+                    } catch (MalformedURLException e) {
+                    } catch (FileNotFoundException e) {
+                    } catch (IOException e) {
+                    }
+                }
+                return null;
+            }
+
+            @Override
             public void onPageFinished(WebView view, String url) {
                 super.onPageFinished(view, url);
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -172,6 +216,8 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
 
         }
 
+
+
     }
 
     @Override
@@ -179,6 +225,15 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
         super.onResume();
 
     }
+    private boolean isImage(String url){
+        for (String extension: imageExtensions){
+            if (url.endsWith(extension)){
+                return true;
+            }
+        }
+        return false;
+    }
+
 
     @Override
     protected void onPause() {
@@ -195,7 +250,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
         wv.setWebChromeClient(new MainViewClient());
         wv.addJavascriptInterface(new WebViewJavaScriptInterface(this), "MainActivity");
         //wv.getSettings().setAppCacheEnabled(false);
-        //wv.getSettings().setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
+        wv.getSettings().setCacheMode(WebSettings.LOAD_DEFAULT);
         //wv.clearCache(true);
         wv.getSettings().setDomStorageEnabled(true);
         if (Build.VERSION.SDK_INT >= 21) {
@@ -270,9 +325,9 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
     @Override
     public void onRefresh() {
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.KITKAT) {
-            wv.evaluateJavascript("pullToRefresh();", null);
+            wv.evaluateJavascript("scrollToReload();", null);
         } else {
-            wv.loadUrl("javascript:pullToRefresh();");
+            wv.loadUrl("javascript:scrollToReload();");
         }
         swipeRefreshLayout.setRefreshing(false);
     }

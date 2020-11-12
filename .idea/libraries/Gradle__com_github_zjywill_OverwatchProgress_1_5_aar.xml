@@ -1,0 +1,15 @@
+<component name="libraryTable">
+  <library name="Gradle: com.github.zjywill:OverwatchProgress:1.5@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/3e18121185abd709015e31318a4c6ab1/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/3e18121185abd709015e31318a4c6ab1/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/3e18121185abd709015e31318a4c6ab1/AndroidManifest.xml" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.zjywill/OverwatchProgress/1.5/3183ab0916b5c903384495259f06ca4dcc8f9fa5/OverwatchProgress-1.5-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.zjywill/OverwatchProgress/1.5/cdc2e8d3e078783b0ba6bb796b51d3ac90997500/OverwatchProgress-1.5-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

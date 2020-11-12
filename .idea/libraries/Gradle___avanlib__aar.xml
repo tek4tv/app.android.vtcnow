@@ -1,0 +1,14 @@
+<component name="libraryTable">
+  <library name="Gradle: :avanlib:@aar">
+    <ANNOTATIONS>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/19f5c1bb98e7f1d004380705bf89ee08/annotations.zip!/" />
+    </ANNOTATIONS>
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/19f5c1bb98e7f1d004380705bf89ee08/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/19f5c1bb98e7f1d004380705bf89ee08/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/19f5c1bb98e7f1d004380705bf89ee08/AndroidManifest.xml" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
